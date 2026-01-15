@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Java Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .skill-category li:before {
+            content: "▹ ";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: var(--white);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-header h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        .experience-header .company {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        .experience-header .date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .experience-item li:before {
+            content: "• ";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card-body {
+            padding: 1.5rem;
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .contact-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+            background: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Portfolio</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Your Name</h1>
+        <p class="subtitle">Java Full Stack Developer</p>
+        <p>8+ years of experience building scalable enterprise applications with React, Angular, Spring Boot, and Cloud Technologies</p>
+        <a href="#contact" class="btn">Get In Touch</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="profile-img">👨‍💻</div>
+            <div class="about-text">
+                <p>Hi! I'm a passionate Java Full Stack Developer with 8+ years of experience in designing and developing enterprise-grade applications. I specialize in building scalable microservices architectures using Spring Boot and modern frontend frameworks like React and Angular.</p>
+                <p>Throughout my career, I've worked across various industries including finance, retail, healthcare, and technology, delivering robust solutions that drive business value. I'm experienced in cloud platforms (AWS, Azure, GCP), event-driven architectures (Kafka, RabbitMQ), and implementing CI/CD pipelines for seamless deployments.</p>
+                <p>I'm committed to writing clean, maintainable code and following best practices like Test-Driven Development (TDD) and Agile methodologies. I'm always eager to learn new technologies and solve challenging problems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Frontend Development</h3>
+                <ul>
+                    <li>React 18 (Hooks, Redux, Context API)</li>
+                    <li>Angular 14+ (NgRx, RxJS)</li>
+                    <li>TypeScript & JavaScript ES6+</li>
+                    <li>HTML5, CSS3, Tailwind CSS</li>
+                    <li>Material-UI, Bootstrap</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Backend Development</h3>
+                <ul>
+                    <li>Java 8/11/17/21</li>
+                    <li>Spring Boot, Spring Cloud</li>
+                    <li>Microservices Architecture</li>
+                    <li>RESTful APIs, GraphQL</li>
+                    <li>Spring Security, OAuth2, JWT</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Databases</h3>
+                <ul>
+                    <li>MySQL, PostgreSQL, Oracle DB</li>
+                    <li>MongoDB, Cassandra, Couchbase</li>
+                    <li>Redis (Caching)</li>
+                    <li>SQL Optimization</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Message Brokers</h3>
+                <ul>
+                    <li>Apache Kafka</li>
+                    <li>RabbitMQ</li>
+                    <li>ActiveMQ</li>
+                    <li>Event-Driven Architecture</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Cloud & DevOps</h3>
+                <ul>
+                    <li>AWS (EC2, Lambda, S3, RDS, EKS)</li>
+                    <li>Azure (AKS, Functions)</li>
+                    <li>GCP (Compute Engine)</li>
+                    <li>Docker, Kubernetes</li>
+                    <li>Jenkins, GitLab CI/CD</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Testing & Tools</h3>
+                <ul>
+                    <li>JUnit 5, Mockito, TestContainers</li>
+                    <li>Selenium, Jest</li>
+                    <li>Prometheus, Grafana</li>
+                    <li>ELK Stack</li>
+                    <li>Git, GitHub, JIRA</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Senior Java Full Stack Developer</h3>
+                    <p class="company">Western Digital Corporation, San Jose, CA</p>
+                </div>
+                <span class="date">Oct 2023 - Present</span>
+            </div>
+            <p><strong>Project:</strong> Product Lifecycle and Supply Chain Management Platform</p>
+            <ul>
+                <li>Architected enterprise-scale platform using React 18, Spring Boot 3.x microservices, and Kafka</li>
+                <li>Deployed cloud-native infrastructure on AWS with 93% test coverage</li>
+                <li>Reduced deployment time by 75% through automated CI/CD pipelines</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Java Full Stack Developer</h3>
+                    <p class="company">Technology Company, Location</p>
+                </div>
+                <span class="date">Aug 2021 - Sep 2023</span>
+            </div>
+            <p><strong>Project:</strong> Enterprise Management System</p>
+            <ul>
+                <li>Built Angular 14 application with NgRx state management and Spring Boot microservices</li>
+                <li>Implemented RabbitMQ and Kafka for asynchronous message processing</li>
+                <li>Deployed to AWS EKS with comprehensive monitoring using Prometheus and Grafana</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Full Stack Java Developer</h3>
+                    <p class="company">Previous Company, Location</p>
+                </div>
+                <span class="date">Dec 2019 - Jul 2021</span>
+            </div>
+            <p><strong>Project:</strong> Vendor Management Platform</p>
+            <ul>
+                <li>Developed React-based UI with Redux and RESTful Spring Boot services</li>
+                <li>Utilized MongoDB and Cassandra for scalable data storage</li>
+                <li>Implemented Azure cloud deployment with automated CI/CD</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3>E-Commerce Platform</h3>
+                </div>
+                <div class="project-card-body">
+                    <p>Full-stack e-commerce application with product catalog, shopping cart, payment integration, and order management.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Stripe API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3>Real-Time Chat Application</h3>
+                </div>
+                <div class="project-card-body">
+                    <p>WebSocket-based chat application with real-time messaging, user authentication, and chat room functionality.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">WebSocket</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3>Task Management System</h3>
+                </div>
+                <div class="project-card-body">
+                    <p>Collaborative task management platform with team boards, task assignments, deadlines, and notifications.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Kafka</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3>Inventory Management API</h3>
+                </div>
+                <div class="project-card-body">
+                    <p>RESTful API for inventory tracking with real-time stock updates, supplier management, and analytics dashboard.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3>Weather Dashboard</h3>
+                </div>
+                <div class="project-card-body">
+                    <p>Interactive weather dashboard with location-based forecasts, historical data visualization, and alerts.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">OpenWeather API</span>
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <h3>Microservices Architecture</h3>
+                </div>
+                <div class="project-card-body">
+                    <p>Scalable microservices architecture with service discovery, API gateway, and distributed tracing.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Spring Cloud</span>
+                        <span class="tech-tag">Eureka</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <p>I'm currently open to new opportunities and interesting projects. Feel free to reach out!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:your.email@example.com">your.email@example.com</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+1234567890">+1 (234) 567-890</a>
+                </div>
+                
+                <div class="contact-item">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📍</div>
+                    <h3>Location</h3>
+                    <p>San Jose, CA</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/yourusername" target="_blank" title="GitHub">
+                    <span style="font-size: 1.5rem;">💻</span>
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn">
+                    <span style="font-size: 1.5rem;">💼</span>
+                </a>
+                <a href="mailto:your.email@example.com" title="Email">
+                    <span style="font-size: 1.5rem;">✉️</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+        <p>Built with HTML, CSS, and JavaScript</p>
+    </footer>
+</body>
+</html>
