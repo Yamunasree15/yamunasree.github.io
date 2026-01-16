@@ -135,18 +135,16 @@
             align-items: center;
         }
 
-        .profile-img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
-            color: white;
-            margin: 0 auto;
-        }
+       .profile-img-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin: 0 auto;
+    display: block;
+}
 
         .about-text p {
             margin-bottom: 1rem;
@@ -439,7 +437,8 @@
     <section id="about">
         <h2>About Me</h2>
         <div class="about-content">
-            <div class="profile-img">👨‍💻</div>
+            <!--<div class="profile-img">👨‍💻</div>-->
+            <img src="photo.jpg" alt="Yamuna Sree" class="profile-img-photo">
             <div class="about-text">
                 <p>Hi! I'm a passionate Java Full Stack Developer with 8 years of experience in designing and developing enterprise-grade applications. I specialize in building scalable microservices architectures using Spring Boot and modern frontend frameworks like React and Angular.</p>
                 <p>Throughout my career, I've worked across various industries including finance, retail, healthcare, and technology, delivering robust solutions that drive business value. I'm experienced in cloud platforms (AWS, Azure, GCP), event-driven architectures (Kafka, RabbitMQ), and implementing CI/CD pipelines for seamless deployments.</p>
