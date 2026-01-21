@@ -175,31 +175,59 @@
         }
 
         /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-        }
+        #about {
+    background: var(--bg-light);
+}
 
-        .profile-img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
-            color: white;
-            margin: 0 auto;
-        }
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        .about-text p {
-            margin-bottom: 1rem;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
+.about-text {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.about-text p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.stat-box {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
 
         /* Skills Section */
         .skills-grid {
@@ -582,12 +610,18 @@
     <section id="about">
         <h2>About Me</h2>
         <div class="about-content">
-            <div class="profile-img">👨‍💻</div>
-            <div class="about-text">
-                <p>Hi! I’m a passionate Java Full Stack Developer with strong experience designing and developing enterprise-grade applications. I specialize in building scalable microservices architectures using Spring Boot and modern frontend frameworks like React and Angular.</p>
-                <p>Throughout my career, I've worked across various healthcare/life sciences, banking/fintech, retail e-commerce, real estate/CRM, and ECM, focused on secure APIs, workflow-driven systems, and performance. I'm experienced in cloud platforms (AWS, Azure, GCP), event-driven architectures (Kafka, RabbitMQ), and implementing CI/CD pipelines for seamless deployments.</p>
-                <p>I'm committed to writing clean, maintainable code and following best practices and Agile methodologies. I'm always eager to learn new technologies and solve challenging problems.</p>
-            </div>
+           <div class="about-content">
+        <div class="about-text">
+            <p>
+                Java Full Stack Developer specializing in React, Angular, and Spring Boot. 
+                I build scalable enterprise applications across healthcare, fintech, retail, and real estate domains.
+            </p>
+            <p>
+                Experienced with cloud platforms (AWS, Azure, GCP), microservices architecture, 
+                and event-driven systems using Kafka. I focus on writing clean code, following best practices, 
+                and delivering solutions that make an impact.
+            </p>
+        </div>
         </div>
     </section>
 
