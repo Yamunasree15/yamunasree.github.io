@@ -112,6 +112,53 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
+        /* Hero Profile Photo Styles - Add this in your <style> section */
+.hero-profile-container {
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease;
+}
+
+.hero-profile-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Fallback icon if no image */
+.hero-profile-icon {
+    font-size: 5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@media (max-width: 768px) {
+    .hero-profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .hero-profile-icon {
+        font-size: 4rem;
+    }
+}
 
         /* Section Styling */
         section {
@@ -514,6 +561,16 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <!-- Profile Photo Container -->
+    <div class="hero-profile-container">
+        <div class="hero-profile-photo">
+            <!-- Option 1: Use an actual image (recommended) -->
+            <img src="your-photo.jpg" alt="Yamuna Sree Pallapu">
+            
+            <!-- Option 2: Use emoji icon as fallback (current) -->
+            <div class="hero-profile-icon">👨‍💻</div>
+        </div>
+    </div>
         <h1>Yamuna Sree Pallapu</h1>
         <p class="subtitle">Java Full Stack Developer</p>
         <p>Specialized in building scalable full-stack applications using React, Angular, Spring Boot, and modern cloud platforms.</p>
