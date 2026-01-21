@@ -409,6 +409,90 @@
                 font-size: 2rem;
             }
         }
+        /* Certification Section Styles - ADD THIS TO YOUR EXISTING <style> TAG */
+#certifications {
+    background: var(--bg-light);
+}
+
+.certification-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.certification-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 2.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid var(--primary-color);
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.certification-badge {
+    flex-shrink: 0;
+}
+
+.badge-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.certification-content {
+    flex: 1;
+}
+
+.certification-content h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.certification-issuer {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.certification-date {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.certification-description {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .certification-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .badge-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+}
+</style>
     </style>
 </head>
 <body>
@@ -421,6 +505,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                <!-- <li><a href="#projects">Projects</a></li> -->
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -694,6 +779,28 @@
         </div>
     </section> -->
 
+<!-- Certification Section - ADD THIS RIGHT AFTER THE EXPERIENCE SECTION -->
+<section id="certifications">
+    <h2>Certifications</h2>
+    <div class="certification-container">
+        <div class="certification-card">
+            <div class="certification-badge">
+                <div class="badge-icon">🏆</div>
+            </div>
+            <div class="certification-content">
+                <h3>AWS Certified Solutions Architect – Associate</h3>
+                <p class="certification-issuer">Amazon Web Services (AWS)</p>
+                <p class="certification-date">Issued: January 2025</p>
+                <p class="certification-description">
+                    Validated expertise in designing distributed systems on AWS, implementing cost and 
+                    performance optimization strategies, and architecting secure and scalable applications 
+                    using AWS services including EC2, S3, RDS, Lambda, VPC, and CloudFormation.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+    
     <!-- Contact Section -->
     <section id="contact">
         <h2>Get In Touch</h2>
