@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yamuna Sree Pallapu | Full Stack Developer</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23000' width='100' height='100'/><text y='75' font-size='70' fill='%230096ff' font-family='Arial, sans-serif' font-weight='bold' x='50%' text-anchor='middle'>YP</text></svg>">
     <style>
         * {
             margin: 0;
@@ -114,11 +115,16 @@
         /* Sections */
         section {
             min-height: 100vh;
-            padding: 6rem 2rem 2rem;
+            padding: 5rem 2rem 3rem;
             display: flex;
             align-items: center;
             justify-content: center;
             scroll-snap-align: start;
+        }
+
+        #about, #experience, #education {
+            min-height: auto;
+            padding: 4rem 2rem 3rem;
         }
 
         html {
@@ -146,17 +152,45 @@
         }
 
         .hero-wrapper {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             max-width: 800px;
             text-align: center;
         }
 
+        .hero-photo {
+            margin-bottom: 2rem;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid rgba(0, 150, 255, 0.5);
+            box-shadow: 0 0 40px rgba(0, 150, 255, 0.4);
+            object-fit: cover;
+            animation: photoFloat 3s ease-in-out infinite;
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.2), rgba(0, 212, 255, 0.1));
+        }
+
+        @keyframes photoFloat {
+            0%, 100% {
+                transform: translateY(0px);
+                box-shadow: 0 0 40px rgba(0, 150, 255, 0.4);
+            }
+            50% {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 50px rgba(0, 150, 255, 0.6);
+            }
+        }
+
         .hero-left {
-            margin-bottom: 3rem;
+            text-align: center;
         }
 
         .hero-left h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             background: linear-gradient(135deg, #0096ff, #00d4ff, #0096ff);
             background-size: 200% 200%;
             -webkit-background-clip: text;
@@ -166,13 +200,13 @@
         }
 
         .hero-left h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #aaa;
             margin-bottom: 1rem;
         }
 
         .hero-left p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #888;
             margin-bottom: 2rem;
             line-height: 1.8;
@@ -623,14 +657,16 @@
             }
             
             .hero-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
             }
             
             .hero-left h1 { font-size: 2.5rem; }
             .hero-left h2 { font-size: 1.5rem; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content h2 { font-size: 1.5rem; }
             .section-title { font-size: 2rem; }
             
             .timeline::before { left: 0; }
@@ -659,10 +695,13 @@
     <section id="home">
         <div class="container">
             <div class="hero-wrapper">
+                <div class="hero-photo">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=faces" alt="Yamuna Sree Pallapu" class="profile-photo">
+                </div>
                 <div class="hero-left">
                     <h1>YAMUNA SREE PALLAPU</h1>
                     <h2>Java Full Stack Developer</h2>
-                    <p>Building scalable enterprise solutions with modern technologies.<br>Passionate about creating efficient, secure, and innovative applications.</p>
+                    <p>Building scalable enterprise solutions with modern technologies. Passionate about creating efficient, secure, and innovative applications.</p>
                     <div class="contact-info">
                         <div class="contact-item">
                             <span>📞</span>
@@ -784,7 +823,7 @@
                     <h3>Java Full Stack Developer</h3>
                     <h4>Western Digital Corporation, Irvine, CA | Oct 2023 - Present</h4>
                     <p><strong>Project: Secure Multi-Tenant Document & Data Vault</strong></p>
-                   <!-- <p>Built a multi-tenant compliance platform to securely store and manage enterprise documents and datasets with RBAC-based access, versioning, audit trails, and retention workflows using Angular, Spring Boot microservices, Kafka, MongoDB, and Azure (AKS, Blob Storage).</p>-->
+                    <p>Built a multi-tenant compliance platform to securely store and manage enterprise documents and datasets with RBAC-based access, versioning, audit trails, and retention workflows using Angular, Spring Boot microservices, Kafka, MongoDB, and Azure (AKS, Blob Storage).</p>
                 </div>
             </div>
 
@@ -793,7 +832,7 @@
                     <h3>Lead Java Developer</h3>
                     <h4>CoStar Group, Richmond, VA | Aug 2021 - Sep 2023</h4>
                     <p><strong>Project: Market Insights & Comparable Analytics Platform</strong></p>
-                  <!--  <p>Built a real estate analytics platform delivering comparable-property insights and market trends for brokers and analysts. Developed React application with Node.js (NestJS) microservices, RabbitMQ for asynchronous processing, PostgreSQL database, and deployed on AWS EKS.</p>-->
+                    <p>Built a real estate analytics platform delivering comparable-property insights and market trends for brokers and analysts. Developed React application with Node.js (NestJS) microservices, RabbitMQ for asynchronous processing, PostgreSQL database, and deployed on AWS EKS.</p>
                 </div>
             </div>
 
@@ -802,7 +841,7 @@
                     <h3>Java Developer</h3>
                     <h4>WSFS Bank, Wilmington, DE | Dec 2019 - July 2021</h4>
                     <p><strong>Project: Digital Personal Loans Origination & Integrations Platform</strong></p>
-                    <!--<p>Developed a digital personal loans origination platform supporting pre-qualification, application submission, document upload, e-sign disclosures, and real-time status tracking. Built using Angular, Spring Boot microservices with OAuth2/JWT security, Kafka messaging, and integrated with third-party underwriting and KYC/AML services.</p>-->
+                    <p>Developed a digital personal loans origination platform supporting pre-qualification, application submission, document upload, e-sign disclosures, and real-time status tracking. Built using Angular, Spring Boot microservices with OAuth2/JWT security, Kafka messaging, and integrated with third-party underwriting and KYC/AML services.</p>
                 </div>
             </div>
 
@@ -811,7 +850,7 @@
                     <h3>Java Application Developer</h3>
                     <h4>TJX Companies, Farmingham, MA | June 2018 - Dec 2019</h4>
                     <p><strong>Project: Omnichannel Commerce Support Platform</strong></p>
-                   <!-- <p>Developed omnichannel e-commerce services and UI features for branded web shopping. Built Angular UI for cart, checkout, order tracking, and returns with Spring Boot APIs for checkout orchestration, fulfillment routing, payment integration, and promotion validation. Deployed on Azure AKS with Kafka event streaming.</p>-->
+                    <p>Developed omnichannel e-commerce services and UI features for branded web shopping. Built Angular UI for cart, checkout, order tracking, and returns with Spring Boot APIs for checkout orchestration, fulfillment routing, payment integration, and promotion validation. Deployed on Azure AKS with Kafka event streaming.</p>
                 </div>
             </div>
 
@@ -820,7 +859,7 @@
                     <h3>Associate Software Engineer</h3>
                     <h4>Newgen Software Technologies, Bangalore, IN | June 2016 - May 2018</h4>
                     <p><strong>Project: Enterprise Content Management</strong></p>
-                   <!-- <p>Developed an ECM/content services solution with React-based document portal and Java backend services supporting document ingestion, indexing/search, versioning, RBAC access control, and maker-checker approval workflows with AWS S3 storage integration.</p>-->
+                    <p>Developed an ECM/content services solution with React-based document portal and Java backend services supporting document ingestion, indexing/search, versioning, RBAC access control, and maker-checker approval workflows with AWS S3 storage integration.</p>
                 </div>
             </div>
         </div>
@@ -880,7 +919,7 @@
     </section>
 
     <footer>
-        <p>© 2026 Yamuna Sree. All rights reserved.</p>
+        <p>© 2025 Yamuna Sree. All rights reserved.</p>
     </footer>
 
     <script>
